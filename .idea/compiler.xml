@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="finalProject" />
+        <module name="jpa" />
+        <module name="module10" />
+        <module name="module11" />
+        <module name="module12" />
+        <module name="module13" />
+        <module name="module14" />
+        <module name="module15" />
+        <module name="module16" />
+        <module name="module17" />
+        <module name="module18" />
+        <module name="module19" />
+        <module name="module2" />
+        <module name="module20" />
+        <module name="module21" />
+        <module name="module22" />
+        <module name="module23" />
+        <module name="module24" />
+        <module name="module25" />
+        <module name="module27" />
+        <module name="module28" />
+        <module name="module29" />
+        <module name="module5" />
+        <module name="module7" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="finalProject" target="1.8" />
+      <module name="jpa" target="1.8" />
+      <module name="module10" target="1.8" />
+      <module name="module11" target="1.8" />
+      <module name="module12" target="1.8" />
+      <module name="module13" target="1.8" />
+      <module name="module14" target="1.8" />
+      <module name="module15" target="1.8" />
+      <module name="module16" target="1.8" />
+      <module name="module17" target="1.8" />
+      <module name="module18" target="1.8" />
+      <module name="module19" target="1.8" />
+      <module name="module2" target="1.8" />
+      <module name="module20" target="1.8" />
+      <module name="module21" target="1.8" />
+      <module name="module22" target="1.8" />
+      <module name="module23" target="1.8" />
+      <module name="module24" target="1.8" />
+      <module name="module25" target="1.8" />
+      <module name="module26" target="1.5" />
+      <module name="module27" target="1.8" />
+      <module name="module28" target="1.8" />
+      <module name="module29" target="1.8" />
+      <module name="module3" target="1.8" />
+      <module name="module4" target="1.8" />
+      <module name="module5" target="1.8" />
+      <module name="module6" target="1.8" />
+      <module name="module7" target="1.8" />
+      <module name="module8" target="1.8" />
+      <module name="module9" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

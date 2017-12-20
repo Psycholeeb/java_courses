@@ -68,7 +68,7 @@ public class PrintMatrix {
 
         String[][] array = new String[arraySize][arraySize];
 
-        for(int i = 0; i<arraySize; i++) {
+        for (int i = 0; i < arraySize; i++) {
             for (int j = 0; j < arraySize; j++) {
                 array[i][j] = symbol;
             }
@@ -82,7 +82,7 @@ public class PrintMatrix {
         System.out.println("5. Подьем вверх (зеркально)");
         numberOfPrint = scannerInt.nextInt();
 
-        switch (numberOfPrint){
+        switch (numberOfPrint) {
             case 1:
                 squarePrint(array);
                 break;
@@ -105,52 +105,55 @@ public class PrintMatrix {
         //System.out.println(arraySize + symbol);
     }
 
-    private static void squarePrint(String[][] arrayForPrint){
+    private static void squarePrint(String[][] arrayForPrint) {
         System.out.println("Выбран способ печати квадрат!");
         counter = 0;
 
-        for(int i = 0; i<arraySize; i++) {
-            for (int j = 0; j < arraySize; j++)
+        for (int i = 0; i < arraySize; i++) {
+            for (int j = 0; j < arraySize; j++) {
                 System.out.print(arrayForPrint[i][j]);
+            }
             System.out.println();
         }
     }
 
-    private static void downPrint(String[][] arrayForPrint){
+    private static void downPrint(String[][] arrayForPrint) {
         System.out.println("Выбран способ печати спуск вниз!");
         counter = 1;
 
-        for(int i = 0; i < arraySize; i++) {
-            for (int j = 0; j < counter; j++)
+        for (int i = 0; i < arraySize; i++) {
+            for (int j = 0; j < counter; j++) {
                 System.out.print(arrayForPrint[i][j]);
+            }
             counter++;
             System.out.println();
         }
     }
 
-    private static void downPrintMirror(String[][] arrayForPrint){
+    private static void downPrintMirror(String[][] arrayForPrint) {
         System.out.println("Выбран способ печати спуск вниз (зеркальный)!");
         counter = 0;
 
-        for(int i = 0; i < arraySize; i++) {
-            for (int j = arraySize-1; j >= counter; j--)
+        for (int i = 0; i < arraySize; i++) {
+            for (int j = arraySize - 1; j >= counter; j--) {
                 System.out.print(arrayForPrint[i][j]);
+            }
             counter++;
             System.out.println();
         }
     }
 
-    private static void upPrint(String[][] arrayForPrint){
+    private static void upPrint(String[][] arrayForPrint) {
         System.out.println("Выбран способ печати подьем вверх!");
         counter = 1;
 
-        for(int i = 0; i<arraySize; i++) {
+        for (int i = 0; i < arraySize; i++) {
             for (int j = 0; j < arraySize; j++) {
-                if(j + counter == arraySize)
+                if (j + counter == arraySize)
                     System.out.print(arrayForPrint[i][j]);
-                if(j + counter > arraySize)
+                if (j + counter > arraySize)
                     System.out.print(arrayForPrint[i][j]);
-                if(j + counter < arraySize)
+                if (j + counter < arraySize)
                     System.out.print(" ");
             }
             counter++;
@@ -158,7 +161,21 @@ public class PrintMatrix {
         }
     }
 
-    private static void upPrintMirror(String[][] arrayForPrint){
-        System.out.println("Выбран способ печати подьем вверз (зеркально)!");
+    private static void upPrintMirror(String[][] arrayForPrint) {
+        System.out.println("Выбран способ печати подьем вверх (зеркально)!");
+        counter = arraySize;
+
+        for (int i = 0; i < arraySize; i++) {
+            for (int j = 0; j < arraySize; j++) {
+                if (j + counter == arraySize)
+                    System.out.print(arrayForPrint[i][j]);
+                if (j + counter > arraySize)
+                    System.out.print(arrayForPrint[i][j]);
+                if (j + counter < arraySize)
+                    System.out.print(" ");
+            }
+            counter--;
+            System.out.println();
+        }
     }
 }

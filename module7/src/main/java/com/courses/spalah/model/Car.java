@@ -1,10 +1,14 @@
 package com.courses.spalah.model;
 
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * Данный класс представляет собой сущность автомобиля
  *
  * @author Ievgen Tararaka
  */
+
+@XmlType(propOrder = {"manufacturer", "modelName", "vin", "lengthMillimeters", "heightMillimeters"})
 public class Car {
     private String manufacturer;
     private String modelName;

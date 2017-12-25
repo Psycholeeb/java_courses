@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import javax.xml.bind.JAXBException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -30,7 +32,7 @@ public class XmlDeserializationTest {
     }
 
     @Test
-    public void testDeserializationFirstXml() {
+    public void testDeserializationFirstXml() throws JAXBException {
         CarParkingDeserializer deserializer = SerializationFactory.getDeserializer(FORMAT);
         CarParking carParking = deserializer.deserialize(firstXml);
 
@@ -67,7 +69,7 @@ public class XmlDeserializationTest {
     }
 
     @Test
-    public void testDeserializationSecondXml() {
+    public void testDeserializationSecondXml() throws JAXBException {
         CarParkingDeserializer deserializer = SerializationFactory.getDeserializer(FORMAT);
         CarParking carParking = deserializer.deserialize(secondXml);
 

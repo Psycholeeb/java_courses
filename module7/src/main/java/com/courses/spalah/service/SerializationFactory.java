@@ -18,6 +18,10 @@ public class SerializationFactory {
      */
     public static CarParkingDeserializer getDeserializer(Format format) {
         // TODO - здесь будет ваша логика. Необходимо вернуть реализацию интерфейса
+        if(format == Format.JSON)
+            return new CarParkingDeserializerJson();
+        if(format == Format.XML)
+            return new CarParkingDeserializerXml();
         return null;
     }
 
@@ -31,6 +35,10 @@ public class SerializationFactory {
      */
     public static CarParkingSerializer getSerializer(Format format) {
         // TODO - здесь будет ваша логика. Необходимо вернуть реализацию интерфейса
+        if(format == Format.JSON)
+            return new CarParkingSerializerJson();
+        if(format == Format.XML)
+            return new CarParkingSerializerXml();
         return  null;
     }
 }

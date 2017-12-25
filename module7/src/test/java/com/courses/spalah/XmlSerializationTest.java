@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import javax.xml.bind.JAXBException;
+
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -67,7 +69,7 @@ public class XmlSerializationTest {
     }
 
     @Test
-    public void testSerializationFirstParking() {
+    public void testSerializationFirstParking() throws JAXBException{
         CarParkingSerializer serializer = SerializationFactory.getSerializer(FORMAT);
         String xml = serializer.serialize(parking1);
 
@@ -75,7 +77,7 @@ public class XmlSerializationTest {
     }
 
     @Test
-    public void testSerializationSecondParking() {
+    public void testSerializationSecondParking() throws JAXBException {
         CarParkingSerializer serializer = SerializationFactory.getSerializer(FORMAT);
         String xml = serializer.serialize(parking2);
 

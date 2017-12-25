@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import javax.xml.bind.JAXBException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -30,7 +32,7 @@ public class JsonDeserializationTest {
     }
 
     @Test
-    public void testDeserializationFirstJson() {
+    public void testDeserializationFirstJson() throws JAXBException {
         CarParkingDeserializer deserializer = SerializationFactory.getDeserializer(FORMAT);
         CarParking carParking = deserializer.deserialize(firstJson);
 
@@ -59,7 +61,7 @@ public class JsonDeserializationTest {
     }
 
     @Test
-    public void testDeserializationSecondJson() {
+    public void testDeserializationSecondJson() throws JAXBException {
         CarParkingDeserializer deserializer = SerializationFactory.getDeserializer(FORMAT);
         CarParking carParking = deserializer.deserialize(secondJson);
 

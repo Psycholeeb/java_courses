@@ -1,5 +1,6 @@
 package com.courses.spalah.model;
 
+import javax.xml.bind.annotation.*;
 import java.util.Arrays;
 
 /**
@@ -7,6 +8,9 @@ import java.util.Arrays;
  *
  * @author Ievgen Tararaka
  */
+
+@XmlType (propOrder = {"address", "parkingName", "cars"}, name = "carParking")
+@XmlRootElement
 public class CarParking {
     private String address;
     private String parkingName;
@@ -37,6 +41,8 @@ public class CarParking {
         this.parkingName = parkingName;
     }
 
+    @XmlElementWrapper(name = "cars")
+    @XmlElement(name = "car")
     public Car[] getCars() {
         return cars;
     }

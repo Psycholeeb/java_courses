@@ -2,3 +2,5 @@ target/
 .idea/workspace.xml
 .idea/libraries/
 out/
+.idea/checkstyle-idea.xml
+.idea/checkstyleidea-libs/readme.txt

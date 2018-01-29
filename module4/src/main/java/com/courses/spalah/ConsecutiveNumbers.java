@@ -26,28 +26,25 @@ public class ConsecutiveNumbers {
         Scanner scanner = new Scanner(System.in);
         String string = scanner.nextLine();
 
-        check(string);
+        if(verifySequence(string)){
+            System.out.println("Последовательность чисел правильная!");
+        } else
+            System.out.println("Последовательность чисел не правильная!");
     }
 
-    private static void check(String string) {
-        int[] arrayOfChar = new int[string.length()];
+    private static boolean verifySequence(String string) {
         int iterator = 0;
-        int error = 0;
 
-        for (String tmp : string.split(",")) {
-            arrayOfChar[iterator] = Integer.parseInt(tmp);
-            if (arrayOfChar[iterator] != iterator + 1) {
-                error++;
+        if (string.charAt(0) != '1')
+            return false;
+        else {
+            for (String number : string.split(",")) {
+                if (Integer.parseInt(number) != iterator + 1) {
+                    return false;
+                }
+                iterator++;
             }
-            iterator++;
         }
-
-        switch (error) {
-            case 0:
-                System.out.println("Последовательность чисел правильная!");
-                break;
-            default:
-                System.out.println("Последовательность чисел не правильная!");
-        }
+        return true;
     }
 }

@@ -15,24 +15,19 @@ class HomeWorkLoops {
      */
 
     static int min(int[] integers) {
-        int[] array = new int[integers.length];
-        int tmp = 0;
+        int min = integers[0];
 
-        for (int i = 0; i < array.length; i++) {
-            array[i] = integers[i];
-            System.out.println("element[" + i + "] = " + array[i]);
+        for (int i = 0; i < integers.length; i++) {
+            System.out.println("element[" + i + "] = " + integers[i]);
 
-            if (i == 0) {
-                tmp = array[i];
-            }
-            if (array[i] < tmp) {
-                tmp = array[i];
+            if (integers[i] < min) {
+                min = integers[i];
             }
         }
 
-        System.out.println("Min number = " + tmp);
+        System.out.println("Min number = " + min);
 
-        return tmp;
+        return min;
     }
 
     /**
@@ -46,24 +41,20 @@ class HomeWorkLoops {
      */
 
     static double max(double[] doubles) {
-        double[] array = new double[doubles.length];
-        double tmp = 0;
+        double max = 0;
+        max = doubles[0];
 
-        for (int i = 0; i < array.length; i++) {
-            array[i] = doubles[i];
-            System.out.println("element[" + i + "] = " + array[i]);
+        for (int i = 0; i < doubles.length; i++) {
+            System.out.println("element[" + i + "] = " + doubles[i]);
 
-            if (i == 0) {
-                tmp = array[i];
-            }
-            if (array[i] > tmp) {
-                tmp = array[i];
+            if (doubles[i] > max) {
+                max = doubles[i];
             }
         }
 
-        System.out.println("Max number = " + tmp);
+        System.out.println("Max number = " + max);
 
-        return tmp;
+        return max;
     }
 
     /**
@@ -77,19 +68,17 @@ class HomeWorkLoops {
      */
 
     static float average(short[] shorts) {
-        short[] array = new short[shorts.length];
-        float tmp = 0;
+        float sum = 0;
         float average = 0;
         int i = 0;
 
-        while (i != array.length) {
-            array[i] = shorts[i];
-            System.out.println("element[" + i + "] = " + array[i]);
-            tmp += array[i];
+        while (i != shorts.length) {
+            System.out.println("element[" + i + "] = " + shorts[i]);
+            sum += shorts[i];
             i++;
         }
 
-        average = tmp / array.length;
+        average = sum / shorts.length;
 
         System.out.println("Average number = " + average);
 
@@ -106,28 +95,24 @@ class HomeWorkLoops {
      */
 
     static char[] reverse(char[] chars) {
-        char[] array = new char[chars.length];
-        char tmp = 0;
+        char symbol = 0;
         int iterator = 0;
         int halfOfLenghtArray = 0;
 
-        for (int i = 0; i < array.length; i++) {
-            array[i] = chars[i];
-            halfOfLenghtArray = array.length / 2;
-        }
+        halfOfLenghtArray = chars.length / 2;
 
-        System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(chars));
 
         do {
-            tmp = array[iterator];
+            symbol = chars[iterator];
 
-            array[iterator] = array[array.length - 1 - iterator];
-            array[array.length - 1 - iterator] = tmp;
+            chars[iterator] = chars[chars.length - 1 - iterator];
+            chars[chars.length - 1 - iterator] = symbol;
             iterator++;
         } while (iterator < halfOfLenghtArray);
 
-        System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(chars));
 
-        return array;
+        return chars;
     }
 }

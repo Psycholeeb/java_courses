@@ -1,6 +1,8 @@
 package com.courses.spalah;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -11,32 +13,20 @@ public class TextAnalyzer {
     private static int counterSymbols = 0;
     private static int counterSentences = 0;
     private static int counterUniqueWords = 0;
-    private static Set<String> mostRepeatedWord = new HashSet<>();
-    private static final String PATH_FILE = "D:/file.txt";
+    private static HashSet<String> mostRepeatedWord = new HashSet<>();
     private static ArrayList<String> arrayListOfWords = new ArrayList<>();
     private static String textInFile = "";
 
     public static void main(String[] args) {
         readTextFromFile();
-
-        System.out.print("\n===================================");
-        System.out.print("\nTotal amount symbols: " + counterSymbols);
-        System.out.print("\nTotal amount words: " + counterWords);
-        System.out.print("\nTotal amount sentences: " + counterSentences);
-        System.out.print("\nTotal amount unique words: " + counterUniqueWords);
-        System.out.print("\nMost repeated word: " + "\"" + mostRepeatedWord + "\"");
-        System.out.print("\nMin length of word: " + foundMinLengthWord());
-        System.out.print("\nMax length of word: " + foundMaxLengthWord());
-        System.out.print("\n\nStatistic frequency words: \n");
-        countFrequencyWords();
-        System.out.print("\nStatistic frequency letters: \n");
-        countFrequencyLetters();
-        System.out.print("===================================\n");
+        writeStatisticInFile();
     }
 
     public static void readTextFromFile() {
+        final String PATH_INPUT_FILE = "F:/courses-2-2016-vlad_stupak_homework_remote/module11/src/main/resources/text_sample.txt";
+
         try {
-            Scanner scanner = new Scanner(new File(PATH_FILE));
+            Scanner scanner = new Scanner(new File(PATH_INPUT_FILE));
 
             while (scanner.hasNext()) {
                 countWordsInFile();
@@ -48,7 +38,29 @@ public class TextAnalyzer {
 
         countSentencesInFile();
         countUniqueWords();
-        countMostRepeatedWord();
+        countMostRepeatedWords();
+    }
+
+    public static void writeStatisticInFile() {
+        final String PATH_OUTPUT_FILE = "F:/courses-2-2016-vlad_stupak_homework_remote/module11/src/main/resources/output.txt";
+
+        try (FileWriter fileWriter = new FileWriter(PATH_OUTPUT_FILE, false)) {
+
+            fileWriter.write("Total amount symbols: " + counterSymbols);
+            fileWriter.write("\nTotal amount words: " + counterWords);
+            fileWriter.write("\nTotal amount sentences: " + counterSentences);
+            fileWriter.write("\nTotal amount unique words: " + counterUniqueWords);
+            fileWriter.write("\nMost repeated word: " + "\"" + mostRepeatedWord + "\"");
+            fileWriter.write("\nMin length of word: " + foundMinLengthWord());
+            fileWriter.write("\nMax length of word: " + foundMaxLengthWord());
+            fileWriter.write("\n\nStatistic frequency words: \n");
+            fileWriter.write(countFrequencyWords().toString());
+            fileWriter.write("\nStatistic frequency letters: \n");
+            fileWriter.write(countFrequencyLetters().toString());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void countWordsInFile() {
@@ -63,7 +75,7 @@ public class TextAnalyzer {
     }
 
     public static void countSentencesInFile() {
-        counterSentences = textInFile.split("\\.").length;
+        counterSentences = textInFile.split("\\.|\\!").length;
     }
 
     public static void countUniqueWords() {
@@ -74,7 +86,7 @@ public class TextAnalyzer {
         }
     }
 
-    public static void countMostRepeatedWord() {
+    public static void countMostRepeatedWords() {
         int maxRepeatedWordCounter = 0;
 
         for (String words : arrayListOfWords) {
@@ -114,8 +126,9 @@ public class TextAnalyzer {
         return maxLengthWord;
     }
 
-    public static void countFrequencyWords() {
+    public static StringBuilder countFrequencyWords() {
         HashMap<String, Integer> frequencyCounter = new HashMap<>();
+        StringBuilder frequencyWords = new StringBuilder();
 
         for (String word : arrayListOfWords) {
             if (!frequencyCounter.containsKey(word)) {
@@ -125,12 +138,15 @@ public class TextAnalyzer {
         }
 
         for (String word : frequencyCounter.keySet()) {
-            System.out.println("| " + word + " = " + frequencyCounter.get(word));
+            frequencyWords.append("| " + word + " = " + frequencyCounter.get(word) + "\n");
         }
+
+        return frequencyWords;
     }
 
-    public static void countFrequencyLetters() {
+    public static StringBuilder countFrequencyLetters() {
         HashMap<Character, Integer> frequencyCounter = new HashMap<>();
+        StringBuilder frequencyLetters = new StringBuilder();
         textInFile = textInFile.replaceAll("\\.|\\,|\\;", "");
 
         for (int i = 0; i < textInFile.length(); i++) {
@@ -141,7 +157,9 @@ public class TextAnalyzer {
         }
 
         for (Character letter : frequencyCounter.keySet()) {
-            System.out.println("| " + letter + " = " + frequencyCounter.get(letter));
+            frequencyLetters.append("| " + letter + " = " + frequencyCounter.get(letter) + "\n");
         }
+
+        return frequencyLetters;
     }
 }

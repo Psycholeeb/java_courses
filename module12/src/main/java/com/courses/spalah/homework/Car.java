@@ -30,4 +30,13 @@ public class Car {
     public void setModelName(String modelName) {
         this.modelName = modelName;
     }
+
+    public boolean equals(Object object) {
+        Car car = (Car) object;
+
+        if((priceInDollars == car.getPriceInDollars()) && (modelName == car.getModelName())) {
+            return true;
+        } else
+            return false;
+    }
 }

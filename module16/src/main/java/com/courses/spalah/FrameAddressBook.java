@@ -6,14 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.IOException;
 import java.sql.SQLException;
 
-public class FrameAddressBook implements ActionListener{
+public class FrameAddressBook implements ActionListener {
     private JTextField inputName, inputLastName, inputAddress, inputSearchId;
     private JLabel outputName, outputLastName, outputAddress;
-    private DbManager dbConnection = new DbManager();
+    private DbManager dbManager = new DbManager();
 
-    public FrameAddressBook() throws SQLException, ClassNotFoundException {
+    public FrameAddressBook() throws SQLException, ClassNotFoundException, IOException {
         JFrame mainFrame = new JFrame("Адресная книга");
         mainFrame.setBounds(400, 300, 600, 200);
         mainFrame.setResizable(false);
@@ -31,9 +32,7 @@ public class FrameAddressBook implements ActionListener{
         mainFrame.setVisible(true);
     }
 
-    private Container CreateElements(Container inputContainer,
-                                     Container outputContainer,
-                                     Container mainContainer) {
+    private Container CreateElements(Container inputContainer, Container outputContainer, Container mainContainer) {
 
         JButton buttonSave = new JButton("Сохранить");
         buttonSave.setFocusPainted(false);
@@ -102,20 +101,23 @@ public class FrameAddressBook implements ActionListener{
         switch (actionCommand) {
             case "Сохранить":
                 try {
-                    dbConnection.addPersonInAddressBook(inputName.getText(),
+                    dbManager.addPersonInAddressBook(inputName.getText(),
                             inputLastName.getText(),
                             inputAddress.getText());
-                    JOptionPane.showMessageDialog(new JOptionPane(),
-                            "Контакт сохранен!",
-                            "Инфо", JOptionPane.INFORMATION_MESSAGE);
                 } catch (SQLException e1) {
                     e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                } catch (ClassNotFoundException e1) {
+                    e1.printStackTrace();
                 }
-
+                JOptionPane.showMessageDialog(new JOptionPane(),
+                            "Контакт сохранен!",
+                            "Инфо", JOptionPane.INFORMATION_MESSAGE);
                 break;
             case "Найти":
                 try {
-                    Person person = dbConnection.searchPersonById(Integer.parseInt(inputSearchId.getText()));
+                    Person person = dbManager.searchPersonById(Integer.parseInt(inputSearchId.getText()));
 
                     if(person != null) {
                         outputName.setText(person.getName());
@@ -127,6 +129,10 @@ public class FrameAddressBook implements ActionListener{
                                 "Инфо", JOptionPane.INFORMATION_MESSAGE);
                     }
                 } catch (SQLException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
                 }
                 break;

@@ -7,9 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author Ievgen Tararaka
- */
 public class WordsPercentageCalculator {
     private List<String> words = new ArrayList<>();
 
@@ -39,7 +36,7 @@ public class WordsPercentageCalculator {
                     .trim();
             String[] wordsInLine = cleanLine.split(" ");
             for (String word : wordsInLine) {
-                words.add(word);
+                words.add(word.toLowerCase());
             }
         }
 
@@ -54,7 +51,15 @@ public class WordsPercentageCalculator {
      */
     public Map<String, Float> getPercentageMap() {
         HashMap<String, Float> percentageMap = new HashMap<>();
-        // TODO ваш код должен быть тут
+        float procentPerOneWord = 1F / words.size() * 100;
+
+        for (String key : words) {
+            if (percentageMap.containsKey(key)) {
+                percentageMap.put(key, (percentageMap.get(key)) + procentPerOneWord);
+            } else {
+                percentageMap.put(key, procentPerOneWord);
+            }
+        }
         return percentageMap;
     }
 }

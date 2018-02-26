@@ -72,6 +72,18 @@ public class FrameAddressBook {
         return mainContainer;
     }
 
+    public void showMessageCompleteSave() {
+        JOptionPane.showMessageDialog(new JOptionPane(),
+                "Контакт сохранен!",
+                "Инфо", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void showMessageContactNotFound() {
+        JOptionPane.showMessageDialog(new JOptionPane(),
+                "Контакт с таким ID не найден!",
+                "Инфо", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public JTextField getObjInputName() {
         return inputName;
     }

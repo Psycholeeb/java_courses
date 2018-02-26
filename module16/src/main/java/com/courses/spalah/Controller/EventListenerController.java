@@ -3,7 +3,6 @@ package com.courses.spalah.Controller;
 import com.courses.spalah.Model.Person;
 import com.courses.spalah.View.FrameAddressBook;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -45,6 +44,7 @@ public class EventListenerController implements FocusListener, ActionListener{
 
         switch (actionCommand) {
             case "Сохранить":
+                view.showMessageCompleteSave();
                 /*try {
                     managerDb.addPersonInAddressBook(inputName.getText(),
                             inputLastName.getText(),
@@ -56,11 +56,9 @@ public class EventListenerController implements FocusListener, ActionListener{
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
                 }*/
-                JOptionPane.showMessageDialog(new JOptionPane(),
-                        "Контакт сохранен!",
-                        "Инфо", JOptionPane.INFORMATION_MESSAGE);
                 break;
             case "Найти":
+                view.showMessageContactNotFound();
                 /*try {
                     Person person = managerDb.searchPersonById(Integer.parseInt(inputSearchId.getText()));
 
@@ -68,11 +66,7 @@ public class EventListenerController implements FocusListener, ActionListener{
                         outputName.setText(person.getName());
                         outputLastName.setText(person.getLastName());
                         outputAddress.setText(person.getAddress());
-                    } else {*/
-                        JOptionPane.showMessageDialog(new JOptionPane(),
-                                "Контакт с таким ID не найден!",
-                                "Инфо", JOptionPane.INFORMATION_MESSAGE);
-                    /*}
+                    }
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 } catch (IOException e1) {

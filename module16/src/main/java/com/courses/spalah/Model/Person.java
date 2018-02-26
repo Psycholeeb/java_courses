@@ -1,4 +1,4 @@
-package com.courses.spalah;
+package com.courses.spalah.Model;
 
 public class Person {
     private String name = "";

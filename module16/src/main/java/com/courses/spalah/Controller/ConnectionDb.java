@@ -1,4 +1,4 @@
-package com.courses.spalah;
+package com.courses.spalah.Controller;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -7,10 +7,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-class DbConnection {
+public class ConnectionDb {
     private Connection connection;
 
-    public DbConnection() throws SQLException, ClassNotFoundException, IOException {
+    public ConnectionDb() throws SQLException, ClassNotFoundException, IOException {
         Properties properties = new Properties();
         FileInputStream input = new FileInputStream(".\\module16\\src\\main\\resources\\config.properties");
         properties.load(input);

@@ -84,35 +84,31 @@ public class FrameAddressBook {
                 "Инфо", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public JTextField getObjInputName() {
+    public JTextField getInputName() {
         return inputName;
     }
 
-    public void setInputNameText(String inputNameText) {
-        this.inputName.setText(inputNameText);
-    }
-
-    public JTextField getObjInputLastName() {
+    public JTextField getInputLastName() {
         return inputLastName;
     }
 
-    public void setInputLastNameText(String inputLastNameText) {
-        this.inputLastName.setText(inputLastNameText);
-    }
-
-    public JTextField getObjInputAddress() {
+    public JTextField getInputAddress() {
         return inputAddress;
     }
 
-    public void setInputAddressText(String inputAddressText) {
-        this.inputAddress.setText(inputAddressText);
-    }
-
-    public JTextField getObjInputSearchId() {
+    public JTextField getInputSearchId() {
         return inputSearchId;
     }
 
-    public void setInputSearchIdText(String inputSearchIdText) {
-        this.inputSearchId.setText(inputSearchIdText);
+    public JLabel getOutputName() {
+        return outputName;
+    }
+
+    public JLabel getOutputLastName() {
+        return outputLastName;
+    }
+
+    public JLabel getOutputAddress() {
+        return outputAddress;
     }
 }

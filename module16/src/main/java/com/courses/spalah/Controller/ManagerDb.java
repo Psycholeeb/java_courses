@@ -9,7 +9,6 @@ public class ManagerDb {
     private Connection connection;
 
     public ManagerDb() {
-
     }
 
     public void addPersonInAddressBook(String name, String lastName, String address) throws SQLException, IOException, ClassNotFoundException {
@@ -49,21 +48,21 @@ public class ManagerDb {
         ConnectionDb connectionDb = new ConnectionDb();
         this.connection = connectionDb.getConnection();
 
-        Person person = new Person();
+        Person model = new Person();
         PreparedStatement personById = connection.prepareStatement(SEARCH_PERSON);
         personById.setInt(1, id);
         ResultSet result = personById.executeQuery();
         result.next();
 
         if (result.first()) {
-            person.setName(result.getString(firstNameColumn));
-            person.setLastName(result.getString(lastNameColumn));
-            person.setAddress(result.getString(addressColumn));
-        } else person = null;
+            model.setName(result.getString(firstNameColumn));
+            model.setLastName(result.getString(lastNameColumn));
+            model.setAddress(result.getString(addressColumn));
+        } else model = null;
 
         personById.close();
         connection.close();
 
-        return person;
+        return model;
     }
 }

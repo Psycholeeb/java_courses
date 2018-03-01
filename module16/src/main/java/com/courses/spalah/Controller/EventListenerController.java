@@ -12,13 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class EventListenerController implements FocusListener, ActionListener{
-    private Person model;
     private FrameAddressBook view;
-
-    public EventListenerController(Person model, FrameAddressBook view) {
-        this.model = model;
-        this.view = view;
-    }
 
     public EventListenerController(FrameAddressBook view) {
         this.view = view;

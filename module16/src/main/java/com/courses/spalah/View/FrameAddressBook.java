@@ -1,6 +1,6 @@
 package com.courses.spalah.View;
 
-import com.courses.spalah.Controller.EventListenerController;
+import com.courses.spalah.Controller.EventListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class FrameAddressBook {
     private JTextField inputName, inputLastName, inputAddress, inputSearchId;
     private JLabel outputName, outputLastName, outputAddress;
-    private EventListenerController eventListenerController = new EventListenerController(this);
+    private EventListener eventListener = new EventListener(this);
 
     public FrameAddressBook() throws SQLException, ClassNotFoundException, IOException {
         JFrame mainFrame = new JFrame("Адресная книга");
@@ -33,28 +33,28 @@ public class FrameAddressBook {
     private Container CreateElements(Container inputContainer, Container outputContainer, Container mainContainer) {
         JButton buttonSave = new JButton("Сохранить");
         buttonSave.setFocusPainted(false);
-        buttonSave.addActionListener(eventListenerController);
+        buttonSave.addActionListener(eventListener);
         inputContainer.add(buttonSave);
 
         inputName = new JTextField("Имя");
-        inputName.addFocusListener(eventListenerController);
+        inputName.addFocusListener(eventListener);
         inputContainer.add(inputName);
 
         inputLastName = new JTextField("Фамилия");
-        inputLastName.addFocusListener(eventListenerController);
+        inputLastName.addFocusListener(eventListener);
         inputContainer.add(inputLastName);
 
         inputAddress = new JTextField("Адрес");
-        inputAddress.addFocusListener(eventListenerController);
+        inputAddress.addFocusListener(eventListener);
         inputContainer.add(inputAddress);
 
         JButton buttonSearch = new JButton("Найти");
         buttonSearch.setFocusPainted(false);
-        buttonSearch.addActionListener(eventListenerController);
+        buttonSearch.addActionListener(eventListener);
         outputContainer.add(buttonSearch);
 
         inputSearchId = new JTextField("ID");
-        inputSearchId.addFocusListener(eventListenerController);
+        inputSearchId.addFocusListener(eventListener);
         outputContainer.add(inputSearchId);
 
         outputName = new JLabel("Имя в БД", SwingConstants.CENTER);

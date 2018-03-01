@@ -1,14 +1,14 @@
-package com.courses.spalah.Controller;
+package com.courses.spalah.Model;
 
-import com.courses.spalah.Model.Person;
+import com.courses.spalah.Controller.ConnectionDb;
 
 import java.io.IOException;
 import java.sql.*;
 
-public class ManagerDb {
+public class RequestDb {
     private Connection connection;
 
-    public ManagerDb() {
+    public RequestDb() {
     }
 
     public void addPersonInAddressBook(String name, String lastName, String address) throws SQLException, IOException, ClassNotFoundException {

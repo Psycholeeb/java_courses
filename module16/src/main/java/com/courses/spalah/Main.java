@@ -1,6 +1,6 @@
 package com.courses.spalah;
 
-import com.courses.spalah.Controller.ManagerAddressBook;
+import com.courses.spalah.Controller.EventListener;
 import com.courses.spalah.Model.Person;
 import com.courses.spalah.View.FrameAddressBook;
 
@@ -11,6 +11,8 @@ public class Main {
     public static void main(String[] args) throws SQLException, IOException, ClassNotFoundException {
         FrameAddressBook view = new FrameAddressBook();
         Person model = new Person();
-        ManagerAddressBook controller = new ManagerAddressBook(view, model);
+        EventListener controller = new EventListener(view, model);
+
+        controller.initController();
     }
 }

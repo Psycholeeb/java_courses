@@ -1,7 +1,5 @@
 package com.courses.spalah.View;
 
-import com.courses.spalah.Controller.EventListener;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
@@ -10,7 +8,7 @@ import java.sql.SQLException;
 public class FrameAddressBook {
     private JTextField inputName, inputLastName, inputAddress, inputSearchId;
     private JLabel outputName, outputLastName, outputAddress;
-    private EventListener eventListener = new EventListener(this);
+    private JButton buttonSave, buttonSearch;
 
     public FrameAddressBook() throws SQLException, ClassNotFoundException, IOException {
         JFrame mainFrame = new JFrame("Адресная книга");
@@ -31,30 +29,24 @@ public class FrameAddressBook {
     }
 
     private Container CreateElements(Container inputContainer, Container outputContainer, Container mainContainer) {
-        JButton buttonSave = new JButton("Сохранить");
+        buttonSave = new JButton("Сохранить");
         buttonSave.setFocusPainted(false);
-        buttonSave.addActionListener(eventListener);
         inputContainer.add(buttonSave);
 
         inputName = new JTextField("Имя");
-        inputName.addFocusListener(eventListener);
         inputContainer.add(inputName);
 
         inputLastName = new JTextField("Фамилия");
-        inputLastName.addFocusListener(eventListener);
         inputContainer.add(inputLastName);
 
         inputAddress = new JTextField("Адрес");
-        inputAddress.addFocusListener(eventListener);
         inputContainer.add(inputAddress);
 
-        JButton buttonSearch = new JButton("Найти");
+        buttonSearch = new JButton("Найти");
         buttonSearch.setFocusPainted(false);
-        buttonSearch.addActionListener(eventListener);
         outputContainer.add(buttonSearch);
 
         inputSearchId = new JTextField("ID");
-        inputSearchId.addFocusListener(eventListener);
         outputContainer.add(inputSearchId);
 
         outputName = new JLabel("Имя в БД", SwingConstants.CENTER);
@@ -110,5 +102,13 @@ public class FrameAddressBook {
 
     public JLabel getOutputAddress() {
         return outputAddress;
+    }
+
+    public JButton getButtonSave() {
+        return buttonSave;
+    }
+
+    public JButton getButtonSearch() {
+        return buttonSearch;
     }
 }

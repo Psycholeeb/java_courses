@@ -8,13 +8,11 @@ import java.sql.*;
 public class RequestDb {
     private Connection connection;
 
-    public RequestDb() {
+    public RequestDb(ConnectionDb connectionDb) {
+        this.connection = connectionDb.getConnection();
     }
 
     public void addPersonInAddressBook(String name, String lastName, String address) throws SQLException, IOException, ClassNotFoundException {
-        ConnectionDb connectionDb = new ConnectionDb();
-        this.connection = connectionDb.getConnection();
-
         final String INSERT_PERSON = "INSERT INTO people.address (address) VALUE (?)";
         final String INSERT_ADDRESS = "INSERT INTO people.person (first_name, last_name, address_id) VALUE (?, ?, ?)";
 
@@ -38,17 +36,13 @@ public class RequestDb {
         connection.close();
     }
 
-    public Person searchPersonById(int id) throws SQLException, IOException, ClassNotFoundException {
+    public Person searchPersonById(int id, Person model) throws SQLException, IOException, ClassNotFoundException {
         final String firstNameColumn = "first_name";
         final String lastNameColumn = "last_name";
         final String addressColumn = "address";
         final String SEARCH_PERSON = "SELECT * FROM people.person LEFT OUTER JOIN people.address "
                 + "ON people.person.address_id = people.address.id WHERE people.person.id = ?";
 
-        ConnectionDb connectionDb = new ConnectionDb();
-        this.connection = connectionDb.getConnection();
-
-        Person model = new Person();
         PreparedStatement personById = connection.prepareStatement(SEARCH_PERSON);
         personById.setInt(1, id);
         ResultSet result = personById.executeQuery();

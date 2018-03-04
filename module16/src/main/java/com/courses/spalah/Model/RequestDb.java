@@ -43,10 +43,9 @@ public class RequestDb {
         final String SEARCH_PERSON = "SELECT * FROM people.person LEFT OUTER JOIN people.address "
                 + "ON people.person.address_id = people.address.id WHERE people.person.id = ?";
 
-        PreparedStatement personById = connection.prepareStatement(SEARCH_PERSON);
+        PreparedStatement personById = this.connection.prepareStatement(SEARCH_PERSON);
         personById.setInt(1, id);
         ResultSet result = personById.executeQuery();
-        result.next();
 
         if (result.first()) {
             model.setName(result.getString(firstNameColumn));
@@ -55,7 +54,7 @@ public class RequestDb {
         } else model = null;
 
         personById.close();
-        connection.close();
+        this.connection.close();
 
         return model;
     }

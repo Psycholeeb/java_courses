@@ -12,56 +12,62 @@ public class FrameAddressBook {
 
     public FrameAddressBook() throws SQLException, ClassNotFoundException, IOException {
         JFrame mainFrame = new JFrame("Адресная книга");
-        mainFrame.setBounds(400, 300, 600, 200);
-        mainFrame.setResizable(false);
+        mainFrame.getContentPane().setLayout(new BorderLayout());
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        Container mainContainer = new Container();
-        Container inputBlockInfo = new Container();
-        Container outputBlockInfo = new Container();
-
-        mainContainer.setLayout(new GridLayout(2,1,20,30));
-        inputBlockInfo.setLayout(new GridLayout(1,1,10,30));
-        outputBlockInfo.setLayout(new GridLayout(1,1,10,30));
-
-        mainFrame.getContentPane().add(CreateElements(inputBlockInfo, outputBlockInfo, mainContainer));
+        mainFrame.setSize(600, 200);
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setResizable(false);
         mainFrame.setVisible(true);
-    }
 
-    private Container CreateElements(Container inputContainer, Container outputContainer, Container mainContainer) {
         buttonSave = new JButton("Сохранить");
         buttonSave.setFocusPainted(false);
-        inputContainer.add(buttonSave);
 
         inputName = new JTextField("Имя");
-        inputContainer.add(inputName);
-
         inputLastName = new JTextField("Фамилия");
-        inputContainer.add(inputLastName);
-
         inputAddress = new JTextField("Адрес");
-        inputContainer.add(inputAddress);
 
         buttonSearch = new JButton("Найти");
         buttonSearch.setFocusPainted(false);
-        outputContainer.add(buttonSearch);
 
         inputSearchId = new JTextField("ID");
-        outputContainer.add(inputSearchId);
+        outputName = new JLabel("Имя в БД");
+        outputLastName = new JLabel("Фамилия в БД");
+        outputAddress = new JLabel("Адрес в БД");
 
-        outputName = new JLabel("Имя в БД", SwingConstants.CENTER);
-        outputContainer.add(outputName);
+        GroupLayout layout = new GroupLayout(mainFrame.getContentPane());
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
 
-        outputLastName = new JLabel("Фамилия в БД", SwingConstants.CENTER);
-        outputContainer.add(outputLastName);
-
-        outputAddress = new JLabel("Адрес в БД", SwingConstants.CENTER);
-        outputContainer.add(outputAddress);
-
-        mainContainer.add(inputContainer);
-        mainContainer.add(outputContainer);
-
-        return mainContainer;
+        layout.setHorizontalGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(inputName)
+                        .addComponent(buttonSave)
+                        .addComponent(buttonSearch)
+                        .addComponent(outputName))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(inputLastName)
+                        .addComponent(inputSearchId)
+                        .addComponent(outputLastName))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(inputAddress)
+                        .addComponent(outputAddress)));
+        layout.setVerticalGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(inputName)
+                        .addComponent(inputLastName)
+                        .addComponent(inputAddress))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(buttonSave))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(buttonSearch)
+                        .addComponent(inputSearchId))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(outputName)
+                        .addComponent(outputLastName)
+                        .addComponent(outputAddress)));
+        layout.linkSize(inputName, inputLastName, inputAddress, inputSearchId,
+                outputName, outputLastName, outputAddress, buttonSave, buttonSearch);
+        mainFrame.getContentPane().setLayout(layout);
     }
 
     public void showMessageCompleteSave() {

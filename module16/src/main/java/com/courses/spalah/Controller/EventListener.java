@@ -14,11 +14,9 @@ import java.sql.SQLException;
 
 public class EventListener implements FocusListener, ActionListener{
     private FrameAddressBook view;
-    private Person model;
 
-    public EventListener(FrameAddressBook view, Person model) {
+    public EventListener(FrameAddressBook view) {
         this.view = view;
-        this.model = model;
     }
 
     public void initController() {
@@ -60,13 +58,14 @@ public class EventListener implements FocusListener, ActionListener{
 
             case "Найти":
                 try {
-                    this.model = sendRequestDb().searchPersonById(Integer.parseInt(view.getInputSearchId().getText()),
-                            this.model);
+                    Person model = new Person();
+                    model = sendRequestDb().searchPersonById(Integer.parseInt(view.getInputSearchId().getText()),
+                            model);
 
-                    if(this.model != null) {
-                        view.getOutputName().setText(this.model.getName());
-                        view.getOutputLastName().setText(this.model.getLastName());
-                        view.getOutputAddress().setText(this.model.getAddress());
+                    if(model != null) {
+                        view.getOutputName().setText(model.getName());
+                        view.getOutputLastName().setText(model.getLastName());
+                        view.getOutputAddress().setText(model.getAddress());
                     } else  view.showMessageContactNotFound();
 
                 } catch (SQLException | IOException | ClassNotFoundException e1) {
